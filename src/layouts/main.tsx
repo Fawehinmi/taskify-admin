@@ -13,10 +13,11 @@ export const ApMainLayout: React.FC<IProps> = ({ children }) => {
   return (
     <div className="w-screen h-screen flex">
       <ApSideNav />
-      <ApTopNav />
+
       <div
-        className={`h-full ${navOpen ? "w-4/5" : "w-full"} overflow-y-scroll`}
+        className={`h-full ${navOpen ? "w-4/5" : "w-full"} overflow-y-scroll `}
       >
+        <ApTopNav />
         {children}
       </div>
     </div>
