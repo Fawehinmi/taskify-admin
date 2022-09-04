@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { ApSideNav } from "../components";
+
 import { ApTopNav } from "../components/nav/TopNav";
-import { LayoutContextProvider } from "./context";
+import { LayoutContextProvider, useLayoutState } from "./context";
 
 interface IProps {
   children: any;
 }
 
 export const ApMainLayout: React.FC<IProps> = ({ children }) => {
+  const { navOpen } = useLayoutState();
   return (
-    <LayoutContextProvider>
-      <div className="w-screen h-screen flex">
-        <ApSideNav />
-        <ApTopNav />
-        <div className="h-full overflow-y-scroll">{children}</div>
+    <div className="w-screen h-screen flex">
+      <ApSideNav />
+      <ApTopNav />
+      <div
+        className={`h-full ${navOpen ? "w-4/5" : "w-full"} overflow-y-scroll`}
+      >
+        {children}
       </div>
-    </LayoutContextProvider>
+    </div>
   );
 };
